@@ -4,7 +4,7 @@ files associated with Dalliance
 
 ###How to liftOver from Assembly 2.4 to 2.5
 
-1. Obtain chain file for the 2 assemblies and chromsizes for new assmebly
+1. Obtain chain file for the 2 assemblies and chromsizes for new assembly
 2. `liftOver` only takes bed or gff files (bed is recommended)
 3. Convert bigBED to bed using `bigBedToBed old.bb old.bed`
 4. Run `liftOver old.bed over.chainfile new.bed unMapped`
@@ -12,7 +12,7 @@ files associated with Dalliance
 6. Convert bed to bigBED `bedToBigBed sorted.new.bed 2.5_chrom_sizes new.bb`
 7. The new.bb file can now be used to replace old.bb file
 
-###How to liftOver SNPs from Assembly 2.4 to 2.5
+###How to liftOver SNP bedfiles from Assembly 2.4 to 2.5
 
 SNPs cannot have same start and end location when lifting. Running liftOver on a SNP bed file will result in all SNPs being excluded. To fix, subtract 1 from every start position.
 
