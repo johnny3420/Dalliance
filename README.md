@@ -26,3 +26,9 @@ test <- read.table("liftedminus1bed", header = F, as.is = T)
 test[,2] <- test[,2]+1 #Shifting position back
 write.table(test,"new.bed",col.names=F,row.names=F,sep="\t",quote=F)
 ```
+
+###Attempting to liftOver within Dalliance
+
+Have to convert over.chain to bigBED.
+
+attempted using instructions at https://github.com/dasmoth/hubbub
