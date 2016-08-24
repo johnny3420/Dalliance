@@ -1,5 +1,5 @@
-# Dialliance
-files associated with Dialliance
+# Dalliance
+files associated with Dalliance
 
 
 ###How to liftOver from Assembly 2.4 to 2.5
