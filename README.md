@@ -35,12 +35,12 @@ Have to convert over.chain to bigBED.
 Use instructions at https://github.com/dasmoth/hubbub
 
 Example setup for chain
-
+```
 chains: {
         itag24Toitag25: {uri: '/ITAG2.4ToITAG2.5.bb',
-                         type: 'bigbed',
-                         coords: {
-                              speciesName: 'Solanum lycopersicum',
+                        type: 'bigbed',
+                        coords: {
+                        speciesName: 'Solanum lycopersicum',
                               taxon: 4081,
                               auth: ' ',
                               version: "ITAG2.3"
@@ -55,7 +55,7 @@ sources: [  {name: 'Genes',
                      },
                 ]
                 
-  
+ ``` 
   
 ## Lifting over bigwig files
 
