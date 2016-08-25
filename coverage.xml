@@ -1,0 +1,16 @@
+<!DOCTYPE DASSTYLE SYSTEM "http://www.biodas.org/dtd/dasstyle.dtd">
+<DASSTYLE> 
+  <STYLESHEET version="0.1"> 
+
+  <CATEGORY id="default"> 
+    <TYPE id="default">
+      <GLYPH>
+       <HISTOGRAM>
+         <COLOR1>green</COLOR1>
+	 <HEIGHT>30</HEIGHT>
+       </HISTOGRAM>
+      </GLYPH>
+    </TYPE>
+   </CATEGORY>
+   </STYLESHEET>
+</DASSTYLE>
