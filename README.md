@@ -20,7 +20,7 @@ liftOver yourfile.bed over.chainfile youfilelifted.bed unMapped
 
 ##How to liftOver SNP bedfiles from Assembly 2.4 to 2.5
 
-SNPs cannot have same start and end location when lifting. Running liftOver on a SNP bed file will result in all SNPs being excluded. To fix, subtract 1 from every start position.
+SNPs cannot have same start and end location when lifting. Running liftOver on a SNP bed file will result in all SNPs being excluded. To fix, subtract 1 from every start position. The below example is being performed in R
 
 ```
 test <- read.table("old.bed", header = F, as.is = T) ##Read in bed file, may need to remove any comments at top of file and readd later
