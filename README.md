@@ -70,3 +70,13 @@ liftOver yourfile.bed overchain.file yourliftedfile.bed unMapped
 sort -k1,1 -k2,2n yourliftedfile.bed > yourliftedfile.sorted.bed
 bedGraphToBigWig yourliftedfile.sorted.bed 2.5_chromo_sizes yourliftedfile.bw
 ```
+## Lifting over bam files
+
+```
+### Depending on what information you wish to keep, you may need to change the options on the utilities
+### This is simply to show how to liftOver the positions
+bedtool bamtobed -i yourfile.bam > yourfile.bed
+liftOver yourfile.bed over.chainfile yourfilelifted.bed unMapped
+sort -k1,1 -k2,2n yourfilelifted.bed > sorted.yourfilelifted.bed
+bedtools bedtobam -i sorted.yourfilelifted.bed -g 2.5_chromo_sizes > yourfilelifted.bam
+```
