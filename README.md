@@ -3,6 +3,11 @@ files associated with Dalliance
 
 ###How to liftOver from Assembly 2.4 to 2.5
 
+##Lifting over bed files
+```
+liftOver yourfile.bed over.chainfile youfilelifted.bed unMapped
+```
+
 ##Lifting over bigBED files
 
 1. Obtain chain file for the 2 assemblies and chromsizes for new assembly
