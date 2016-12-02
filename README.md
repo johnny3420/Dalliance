@@ -1,3 +1,66 @@
+# Creating Chain.over file for (OLD) ITAG2.4 to (NEW) ITAG2.5 (Can be modified to work with other organisms)
+
+## Download and install necessary tools
+
+Downloading all tools at once isn't working so will install one by one
+
+```
+cd /usr/local/bin
+sudo -s
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/blat/blat
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/faSplit
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/chainMergeSort
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/chainNet
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/twoBitInfo
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/liftUp
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/axtChain
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/netChainSubset
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/faToTwoBit
+###Set all to executable
+chmod 755 blat faSplit chainMergeSort chainNet twoBitInfo liftUp axtChain netChainSubset faToTwoBit
+```
+
+## Setup workspace and download genome files from solgenomics.net
+
+
+```
+mkdir LiftOver
+cd LiftOver
+mkdir -p ITAG2.4 ITAG2.5 lift raw psl scratch/split
+cd ITAG2.4
+wget ftp://ftp.solgenomics.net/tomato_genome/assembly/build_2.40/S_lycopersicum_chromosomes.2.40.fa.gz
+gunzip S_lycopersicum_chromosomes.2.40.fa.gz
+cd ../ITAG2.5
+wget ftp://ftp.solgenomics.net/tomato_genome/assembly/build_2.50/S_lycopersicum_chromosomes.2.50.fa.gz
+gunzip S_lycopersicum_chromosomes.2.50.fa.gz
+```
+
+## Get chromosome sizes for later
+
+```
+cd LiftOver/ITAG2.4
+faToTwoBit S_lycopersicum_chromosomes.2.40.fa S_lycopersicum_chromosomes.2.40.2bit
+twoBitInfo S_lycopersicum_chromosomes.2.40.2bit 2.40.chrom.sizes
+cd LiftOver/ITAG2.5
+faToTwoBit S_lycopersicum_chromosomes.2.50.fa S_lycopersicum_chromosomes.2.50.2bit
+twoBitInfo S_lycopersicum_chromosomes.2.50.2bit 2.50.chrom.sizes
+```
+
+## Split the (NEW) ITAG2.5 genome by chromosome then into 3kb chunks
+
+```
+cd LiftOver
+for i in 00 01 02 03 04 05 06 07 08 09 10 11 12; do faSplit -lift=lift/SL2.50ch${i}.lft size ITAG2.5/S_lycopersicum_chromosomes.2.50.fa -oneFile 3000 scratch/split/SL2.50ch${i}; done
+```
+
+## BLAT query sequences from (NEW) ITAG2.5 against (OLD) ITAG2.4
+
+```
+for i in 00 01 02 03 04 05 06 07 08 09 10 11 12; do blat ITAG2.4/S_lycopersicum_chromosomes.2.40.2bit scratch/split/SL2.50ch${i}.fa psl/SL2.50ch${i}.psl -tileSize=12 -minScore=100 -minIdentity=98 -fastMap; done
+```
+
+
+
 # Dalliance
 files associated with Dalliance
 
