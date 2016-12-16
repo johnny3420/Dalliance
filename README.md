@@ -51,14 +51,23 @@ twoBitInfo S_lycopersicum_chromosomes.2.50.2bit 2.50.chrom.sizes
 ```
 cd LiftOver
 for i in 00 01 02 03 04 05 06 07 08 09 10 11 12; do faSplit -lift=lift/SL2.50ch${i}.lft size ITAG2.5/S_lycopersicum_chromosomes.2.50.fa -oneFile 3000 scratch/split/SL2.50ch${i}; done
+cd ..
 ```
 
 ## BLAT query sequences from (NEW) ITAG2.5 against (OLD) ITAG2.4
 
 ```
-for i in 00 01 02 03 04 05 06 07 08 09 10 11 12; do blat ITAG2.4/S_lycopersicum_chromosomes.2.40.2bit scratch/split/SL2.50ch${i}.fa psl/SL2.50ch${i}.psl -tileSize=12 -minScore=100 -minIdentity=98 -fastMap; done
+cd psl
+for i in 00 01 02 03 04 05 06 07 08 09 10 11 12; do blat ../ITAG2.4/S_lycopersicum_chromosomes.2.40.2bit ../scratch/split/SL2.50ch${i}.fa SL2.40ch${i}.psl -tileSize=12 -minScore=100 -minIdentity=98 -fastMap; done
 ```
 
+## Use liftUp to change the coordinate system. Requires .lft files
+
+```
+cd raw
+for i in 00 01 02 03 04 05 06 07 08 09 10 11 12; do liftUp -pslQ SL2.50ch$i.psl ../lift/SL2.50ch$i.lft warn ../psl/SL2.50ch$i.psl; done
+
+```
 
 
 # Dalliance
