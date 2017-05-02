@@ -1,5 +1,7 @@
 # Creating Chain.over file for (OLD) ITAG2.4 to (NEW) ITAG2.5 (Can be modified to work with other organisms)
 
+## Steps missing!!!
+
 ## Download and install necessary tools
 
 Downloading all tools at once isn't working so will install one by one
@@ -67,6 +69,8 @@ for i in 00 01 02 03 04 05 06 07 08 09 10 11 12; do blat ../ITAG2.4/S_lycopersic
 cd raw
 for i in 00 01 02 03 04 05 06 07 08 09 10 11 12; do liftUp -pslQ SL2.50ch${i}.psl ../lift/SL2.50ch${i}.lft warn ../psl/SL2.40ch${i}.psl; done
 ```
+
+## Next steps missing
 
 
 # Dalliance
